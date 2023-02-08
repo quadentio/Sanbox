@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanboxApiWebApp", "SanboxApiWebApp\SanboxApiWebApp.csproj", "{90D0D4A5-5DE2-494B-8A38-026F0D30F6E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D0D4A5-5DE2-494B-8A38-026F0D30F6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D0D4A5-5DE2-494B-8A38-026F0D30F6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D0D4A5-5DE2-494B-8A38-026F0D30F6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D0D4A5-5DE2-494B-8A38-026F0D30F6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE78C57D-FCCB-430D-8BE3-2D913D038717}
+	EndGlobalSection
+EndGlobal

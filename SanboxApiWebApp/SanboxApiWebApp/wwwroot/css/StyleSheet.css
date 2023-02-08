@@ -1,0 +1,59 @@
+﻿.header--center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header--style {
+    color: #971b1b;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.cm-font-style{
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.cm-text-align {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.cm-border-style {
+    border: solid 1px #111;
+}
+
+/**
+Sanbox 1
+*/
+.sb1 .sb_header {
+    padding: 10px;
+
+}
+
+.sb1 .sb_body {
+    display: flex;
+    flex-direction: row;
+}
+
+.sb1 .sb_title {
+    color: rgb(59, 89, 226);
+}
+
+.sb1 h2 {
+    margin-left: 15px;
+}
+
+.sb1 button {
+    height: 25px;
+    padding: 0 10px;
+    font-size: 14px;
+    margin: 20px 0px 0px 20px;
+}
