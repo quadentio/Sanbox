@@ -30,6 +30,10 @@
     border: solid 1px #111;
 }
 
+main {
+    padding: 10px;
+}
+
 /**
 Sanbox 1
 */
@@ -52,6 +56,68 @@ Sanbox 1
 }
 
 .sb1 button {
+    height: 25px;
+    padding: 0 10px;
+    font-size: 14px;
+    margin: 20px 0px 0px 20px;
+}
+
+/**
+Sanbox 2
+*/
+.sb2 {
+    margin-top: 20px;
+}
+
+.sb2 .sb_header {
+    padding: 10px;
+}
+
+.sb2 .sb_body {
+    display: flex;
+    flex-direction: row;
+}
+
+.sb2 .sb_title {
+    color: rgb(59, 89, 226);
+}
+
+.sb2 h2 {
+    margin-left: 15px;
+}
+
+.sb2 button {
+    height: 25px;
+    padding: 0 10px;
+    font-size: 14px;
+    margin: 20px 0px 0px 20px;
+}
+
+/**
+Sanbox 3
+*/
+.sb3 {
+    margin-top: 20px;
+}
+
+.sb3 .sb_header {
+    padding: 10px;
+}
+
+.sb3 .sb_body {
+    display: flex;
+    flex-direction: row;
+}
+
+.sb3 .sb_title {
+    color: rgb(59, 89, 226);
+}
+
+.sb3 h2 {
+    margin-left: 15px;
+}
+
+.sb3 button {
     height: 25px;
     padding: 0 10px;
     font-size: 14px;
