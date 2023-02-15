@@ -39,8 +39,7 @@ var SANBOX = {
         },
 
         eventClick: function () {
-            // TODO: call api weather forcast
-            let endpoint = "/WeatherForecast";
+            let endpoint = "/api/WeatherForecast";
 
             // Ajax parameter
             let ajaxParam = $.extend({}, AJAX_PARAM_DEFAULT);
@@ -50,9 +49,12 @@ var SANBOX = {
             ajaxParam[AJAX_PARAM_NAME.CONTENT_TYPE] = AJAX_CONTENT_TYPE.JSON;
             ajaxParam[AJAX_PARAM_NAME.CALLBACK_SUCCESS] = function (response, textStatus, jqXHR) {
                 // TODO: process after call api success
-                console.log(response);
-                console.log(textStatus);
-                console.log(jqXHR);
+                $('.sb3 .sb_body #response').html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
+            };
+
+            ajaxParam[AJAX_PARAM_NAME.CALLBACK_ERROR] = function (jqXHR, textStatus, errorThrown) {
+                var errorMessage = jqXHR.statusText || "Unknown error";
+                $('.sb3 .sb_body #response').html("<div class='error'>" + errorMessage + "</div>");
             };
 
             doAjax(ajaxParam);
