@@ -35,10 +35,11 @@ var SANBOX = {
 
     sb3: {
         register: function () {
-            $('.sb3 button').unbind('click').on('click', SANBOX.sb3.eventClick);
+            $('.sb3 .getButton').unbind('click').on('click', SANBOX.sb3.eventClickGet);
+            $('.sb3 .collButton').unbind('click').on('click', SANBOX.sb3.eventClickCollapse);
         },
 
-        eventClick: function () {
+        eventClickGet: function () {
             let endpoint = "/api/WeatherForecast";
 
             // Ajax parameter
@@ -49,16 +50,22 @@ var SANBOX = {
             ajaxParam[AJAX_PARAM_NAME.CONTENT_TYPE] = AJAX_CONTENT_TYPE.JSON;
             ajaxParam[AJAX_PARAM_NAME.CALLBACK_SUCCESS] = function (response, textStatus, jqXHR) {
                 // TODO: process after call api success
-                $('.sb3 .sb_body #response').html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
+                $('.sb3 .sb_body .response').html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
             };
 
             ajaxParam[AJAX_PARAM_NAME.CALLBACK_ERROR] = function (jqXHR, textStatus, errorThrown) {
                 var errorMessage = jqXHR.statusText || "Unknown error";
-                $('.sb3 .sb_body #response').html("<div class='error'>" + errorMessage + "</div>");
+                $('.sb3 .sb_body .response').html("<div class='error'>" + errorMessage + "</div>");
             };
 
             doAjax(ajaxParam);
-        }
+        },
+
+        eventClickCollapse: function () {
+            // Collapse reponse result of api call
+            $('.sb3 .sb_body .response pre').remove();
+            $('.sb3 .sb_body .response .error').remove();
+        },
     },
 };
 

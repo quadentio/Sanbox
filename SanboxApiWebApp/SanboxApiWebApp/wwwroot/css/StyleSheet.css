@@ -137,5 +137,12 @@ Sanbox 3
     height: 25px;
     padding: 0 10px;
     font-size: 14px;
+}
+
+.sb3 .getButton {
     margin: 20px 20px 20px 20px;
+}
+
+.sb3 .collButton {
+    margin: 20px 0px 0px 0px;
 }
