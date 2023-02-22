@@ -5,6 +5,7 @@ var SANBOX = {
         SANBOX.sb1.register();
         SANBOX.sb2.register();
         SANBOX.sb3.register();
+        SANBOX.sb4.register();
     },
 
     sb1: {
@@ -65,6 +66,79 @@ var SANBOX = {
             // Collapse reponse result of api call
             $('.sb3 .sb_body .response pre').remove();
             $('.sb3 .sb_body .response .error').remove();
+        },
+    },
+
+    sb4: {
+        register: function () {
+            $('.sb4 .getButton').unbind('click').on('click', SANBOX.sb4.eventClickGet);
+        },
+
+        eventClickGet: function () {
+            let objectHeader = {
+                header1: "ID",
+                header2: "Name",
+                header3: "Age",
+                header4: "Location",
+                header5: "Sex"
+            };
+
+            let Objects = [
+                {
+                    ID: "1A1C",
+                    Name: "Matsumoto",
+                    Age: 26,
+                    Location: "VN",
+                    Sex: 1
+                },
+                {
+                    ID: "1A1A",
+                    Name: "Sato",
+                    Age: 28,
+                    Location: "JP",
+                    Sex: 1
+                },
+                {
+                    ID: "1A1B",
+                    Name: "Kobayashi",
+                    Age: 30,
+                    Location: "USA",
+                    Sex: 0
+                },
+            ];
+
+            let objectHeaderValues = Object.values(objectHeader);
+
+            let table = $("<table>", { class: "my-table" });
+            let tHead = $("<thead>");
+            let tBody = $("<tbody>");
+            
+            // Create Header
+            let tr = $("<tr>");
+            for (var i = 0; i < Object.keys(objectHeader).length; i++) {
+                let th = $("<th>")
+                th.text(objectHeaderValues[i]);
+                tr.append(th);
+            }
+            tHead.append(tr);
+            table.append(tHead);
+
+            // Create body
+            Objects.forEach(function (item) {
+                let tr = $("<tr>");
+                for (var i = 0; i < Object.keys(objectHeader).length; i++) {
+                    let td = $("<td>");
+                    td.text(item[objectHeaderValues[i]]);
+                    tr.append(td);
+                }
+                tBody.append(tr);
+            });
+            table.append(tBody);
+
+            // Remove previous table
+            $('.sb4 .response table').remove();
+            // Add table to reponse
+            $('.sb4 .response').append(table);
         },
     },
 };

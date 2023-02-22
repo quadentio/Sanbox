@@ -146,3 +146,37 @@ Sanbox 3
 .sb3 .collButton {
     margin: 20px 0px 0px 0px;
 }
+
+/**
+Sanbox 4
+*/
+.sb4 {
+    margin-top: 20px;
+}
+
+    .sb4 .sb_header {
+        padding: 10px;
+    }
+
+    .sb4 .sb_body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sb4 .sb_title {
+        color: rgb(59, 89, 226);
+    }
+
+    .sb4 h2 {
+        margin-left: 15px;
+    }
+
+    .sb4 button {
+        height: 25px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .sb4 .getButton {
+        margin: 20px 20px 20px 20px;
+    }
