@@ -1,4 +1,4 @@
-namespace SanboxApiWebApp
+namespace SanboxApiWebApp.Models.Domain
 {
     public class WeatherForecast
     {

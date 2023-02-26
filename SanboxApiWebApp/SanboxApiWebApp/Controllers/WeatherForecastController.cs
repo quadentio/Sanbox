@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SanboxApiWebApp.Models.Domain;
 
 namespace SanboxApiWebApp.Controllers
 {

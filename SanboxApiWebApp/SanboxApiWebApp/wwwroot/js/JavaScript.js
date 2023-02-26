@@ -6,14 +6,15 @@ var SANBOX = {
         SANBOX.sb2.register();
         SANBOX.sb3.register();
         SANBOX.sb4.register();
+        SANBOX.sb5.register();
     },
 
     sb1: {
-        register: function() {
+        register: function () {
             $('.sb1 button').unbind('click').on('click', SANBOX.sb1.eventClick);
         },
 
-        eventClick: function() {
+        eventClick: function () {
             $('.sb1 h2').html("After click button");
         }
     },
@@ -72,6 +73,7 @@ var SANBOX = {
     sb4: {
         register: function () {
             $('.sb4 .getButton').unbind('click').on('click', SANBOX.sb4.eventClickGet);
+            $('.sb4 .collButton').unbind('click').on('click', SANBOX.sb4.eventClickCollapse);
         },
 
         eventClickGet: function () {
@@ -109,10 +111,10 @@ var SANBOX = {
 
             let objectHeaderValues = Object.values(objectHeader);
 
-            let table = $("<table>", { class: "my-table" });
+            let table = $("<table>", { class: "cm-table-style", border: 1 });
             let tHead = $("<thead>");
             let tBody = $("<tbody>");
-            
+
             // Create Header
             let tr = $("<tr>");
             for (var i = 0; i < Object.keys(objectHeader).length; i++) {
@@ -140,6 +142,203 @@ var SANBOX = {
             // Add table to reponse
             $('.sb4 .response').append(table);
         },
+
+        eventClickCollapse: function () {
+            // Remove previous table
+            $('.sb4 .response table').remove();
+        }
+    },
+
+    sb5: {
+
+        register: function () {
+            $('.sb5 .getButton').unbind('click').on('click', SANBOX.sb5.eventClickGet);
+            $('.sb5 .collButton').unbind('click').on('click', SANBOX.sb5.eventClickCollapse);
+        },
+
+        eventClickGet: function () {
+
+            let headerOrder = SANBOX.sb5.shuffleArray(["class2", "class4", "class3", "class1", "class5"]);
+            let roomOrder = SANBOX.sb5.shuffleArray(["room2", "room1", "room3"]);
+
+            let Objects = [
+
+                room = {
+                    id: 1,
+                    content: {
+                        class1: "This is class1 of room1",
+                        class2: "This is class2 of room1",
+                        class3: "This is class3 of room1",
+                        class4: "This is class4 of room1",
+                        class5: "This is class5 of room1",
+                    },
+                },
+                room = {
+                    id: 2,
+                    content: {
+                        class1: "This is class1 of room2",
+                        class2: "This is class2 of room2",
+                        class3: "This is class3 of room2",
+                        class4: "This is class4 of room2",
+                        class5: "This is class5 of room2",
+                    },
+                }, 
+                room = {
+                    id: 3,
+                    content: {
+                        class1: "This is class1 of room3",
+                        class2: "This is class2 of room3",
+                        class3: "This is class3 of room3",
+                        class4: "This is class4 of room3",
+                        class5: "This is class5 of room3",
+                    },
+                }, 
+            ];
+
+            let table = $("<table>", { class: "cm-table-style", border: 1 });
+            let thead = $("<thead>");
+            let tbody = $("<tbody>");
+
+            // Create column header for table
+            let header = SANBOX.sb5.createColHeader(Objects[0], headerOrder);
+            thead.append(header);
+
+            // Create body part of table
+            // 4 loops :"> not break
+            // for (let j = 0; j < roomOrder.length; j++) {
+            //     let roomId = roomOrder[j];
+            //     Objects.forEach(function (item, index) {
+            //         if (roomId == "room" + item.id) {
+            //             let tr = $("<tr>").html($("<th>").text(roomId));
+            //             // With order
+            //             for (let i = 0; i < headerOrder.length; i++) {
+            //                 let key = headerOrder[i];
+            //                 let roomKeys = Object.keys(Objects[0].content);
+            //                 roomKeys.forEach(function (roomKey) {
+            //                     if (key == roomKey) {
+            //                         let td = $("<td>").text(item.content[key]);
+            //                         tr.append(td);
+            //                         // For performace
+            //                         return;
+            //                     }
+            //                 });
+            //             }
+            //             tbody.append(tr);
+            //             // For performace
+            //             return;
+            //         }
+            //     });
+            // }
+
+            // Create body part of table
+            // 4 loops :"> break
+            for (let j = 0; j < roomOrder.length; j++) {
+                let roomId = roomOrder[j];
+                for (let item of Objects) {
+                    if (roomId == "room" + item.id) {
+                        let tr = $("<tr>").html($("<th>").text(roomId));
+                        // With order
+                        for (let i = 0; i < headerOrder.length; i++) {
+                            let key = headerOrder[i];
+                            let roomKeys = Object.keys(Objects[0].content);
+                            for (let roomKey of roomKeys) {
+                                if (key == roomKey) {
+                                    let td = $("<td>").text(item.content[key]);
+                                    tr.append(td);
+                                    // for performace
+                                    break;
+                                }
+                            }
+                        }
+                        tbody.append(tr);
+                        // for performace
+                        break;
+                    }
+                }
+            }
+            
+            // Objects.forEach(function (item, index) {
+            //     let tr = $("<tr>").html($("<th>").text("room" + item.id));
+            //     // Use the same loop method with column header to make sure the order of class is right
+            //     // => not good for my opinion
+            //     // let roomKeys = Object.keys(Objects[0].content);
+            //     // roomKeys.forEach(function (key, index) {
+            //     //     let td = $("<td>").text(item.content[key]);
+            //     //     tr.append(td);
+            //     // });
+
+            //     // With order
+            //     for (let i = 0; i < headerOrder.length; i++) {
+                    
+            //         let key = headerOrder[i];
+            //         let roomKeys = Object.keys(Objects[0].content);
+            //         roomKeys.forEach(function (roomKey) {
+            //             if (key == roomKey) {
+            //                 let td = $("<td>").text(item.content[key]);
+            //                 tr.append(td);
+            //                 // This is for faster performance
+            //                 // break;
+            //             }
+            //         });
+                    
+            //     }
+
+            //     tbody.append(tr);
+            // });
+
+            table.append(thead);
+            table.append(tbody);
+
+            // Remove previous table
+            $('.sb5 .response table').remove();
+            // Add table to reponse
+            $('.sb5 .response').append(table);
+        },
+
+        createColHeader: function (room, headerOrder) {
+            let thSample = "<th>CONTENT</th>";
+            let header = thSample.replace("CONTENT", "");
+
+            // Without order
+            // let roomKeys = Object.keys(room.content);
+            // roomKeys.forEach(function (item, index) {
+            //     let th = "<th>CONTENT</th>".replace("CONTENT", item);
+            //     header += th;
+            // });
+            
+            // With order
+            for (let i = 0; i < headerOrder.length; i++) {
+                let key = headerOrder[i];
+                let roomKeys = Object.keys(room.content);
+                for (let item of roomKeys) {
+                    if (item == key) {
+                        header += thSample.replace("CONTENT", key);
+                        break;
+                    }
+                }
+            }
+
+            return header;
+        },
+
+        // Shuffle array
+        // CHAT GPT
+        shuffleArray: function(array) {
+            let shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                // Generate random number between 0 ... i
+              const j = Math.floor(Math.random() * (i + 1));
+                // Swap element in javascript
+              [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+
+            return shuffled;
+        },
+
+        eventClickCollapse: function () {
+            // Remove previous table
+            $('.sb5 .response table').remove();
+        }
     },
 };
 
