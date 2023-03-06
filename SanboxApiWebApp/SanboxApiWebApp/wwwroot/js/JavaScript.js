@@ -1,5 +1,8 @@
 ﻿//#sourceURL=JavaScript.js
 
+// 
+var intervalID = null;
+
 var SANBOX = {
     init: function () {
         SANBOX.sb1.register();
@@ -7,6 +10,7 @@ var SANBOX = {
         SANBOX.sb3.register();
         SANBOX.sb4.register();
         SANBOX.sb5.register();
+        SANBOX.sb6.register();
     },
 
     sb1: {
@@ -154,6 +158,8 @@ var SANBOX = {
         register: function () {
             $('.sb5 .getButton').unbind('click').on('click', SANBOX.sb5.eventClickGet);
             $('.sb5 .collButton').unbind('click').on('click', SANBOX.sb5.eventClickCollapse);
+            $('.sb5 .intervalButton').unbind('click').on('click', SANBOX.sb5.eventClickIntervalButton);
+            $('.sb5 .stopInButton').unbind('click').on('click', SANBOX.sb5.eventClickStopIntervalButton);
         },
 
         eventClickGet: function () {
@@ -336,9 +342,61 @@ var SANBOX = {
         },
 
         eventClickCollapse: function () {
+            // Clear interval
+            if (intervalID != null) {
+                clearInterval(intervalID);
+                intervalID = null;
+            }
             // Remove previous table
             $('.sb5 .response table').remove();
-        }
+        },
+
+        eventClickIntervalButton: function () {
+            // Set interval
+            intervalID = setInterval(() => {
+                $('.sb5 .getButton').trigger('click');
+            }, 1000);
+        },
+
+        eventClickStopIntervalButton: function () {
+            // Clear interval
+            if (intervalID != null) {
+                clearInterval(intervalID);
+                intervalID = null;
+            }
+        },
+    },
+
+    sb6: {
+
+        register: function () {
+            $('.sb6 .getButton').unbind('click').on('click', SANBOX.sb6.eventClickGet);
+            $('.sb6 .collButton').unbind('click').on('click', SANBOX.sb6.eventClickCollapse);
+        },
+
+        eventClickGet: function () {
+
+            // Remove previous table
+            let input = ($('.sb6 .request input').val() != null) ? $('.sb6 .request input').val() : 0;
+            $('.sb6 .response h2').html("Wait " + input + "s");
+
+            let callBack = () => {
+                setTimeout(() => {
+                    $('.sb6 .response h2').html(`You just had wasted ${input} seconds of your life \\(^.^)/`);
+                }, (1) * 1000);
+            };
+
+            // Add table to reponse
+            setTimeout(() => {
+                $('.sb6 .response h2').html(`Congratulation`);
+                callBack();
+            }, Number(input) * 1000);
+        },
+
+        eventClickCollapse: function () {
+            $('.sb6 .request input').val(``);
+            $('.sb6 .response h2').html(`RESPONSE`);
+        },
     },
 };
 

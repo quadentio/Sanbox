@@ -153,3 +153,18 @@ Sanbox 5
 .sb5 h2 {
     margin-left: 15px;
 }
+
+/**
+Sanbox 6
+*/
+.sb6 h2 {
+    margin-left: 15px;
+}
+
+.sb6 .request {
+    margin: auto 0 auto 15px;
+}
+
+.sb6 .request input {
+    width: 40px;
+}
